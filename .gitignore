@@ -1,0 +1,25 @@
+# General
+.DS_Store
+*.iml
+.idea/
+local.properties
+
+# Gradle
+.gradle/
+build/
+**/build/
+
+# Kotlin
+*.kotlin_module
+*.Kotlin
+
+# Android
+/androidApp/build
+/androidApp/.cxx
+/androidApp/.externalNativeBuild
+
+# iOS
+/iosApp/build
+/iosApp/Pods
+/iosApp/*.xcworkspace
+/iosApp/xcuserdata/
