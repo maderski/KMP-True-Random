@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "KMP_True_Random_SDK"
+rootProject.name = "KMP_True_Random"
 include(":shared")

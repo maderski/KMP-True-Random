@@ -1,4 +1,4 @@
-package com.maderskitech.kmptruerandomsdk
+package com.maderskitech.kmptruerandom
 
 class Greeting {
     private val platform: Platform = getPlatform()

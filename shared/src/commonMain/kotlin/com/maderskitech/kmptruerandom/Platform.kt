@@ -1,4 +1,4 @@
-package com.maderskitech.kmptruerandomsdk
+package com.maderskitech.kmptruerandom
 
 interface Platform {
     val name: String

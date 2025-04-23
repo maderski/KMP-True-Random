@@ -1,4 +1,4 @@
-package com.maderskitech.kmptruerandomsdk
+package com.maderskitech.kmptruerandom
 
 class AndroidPlatform : Platform {
     override val name: String = "Android ${android.os.Build.VERSION.SDK_INT}"
