@@ -5,6 +5,7 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 kotlin {
@@ -33,16 +34,19 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            //put your multiplatform dependencies here
+            // General KTOR dependencies
+            api(libs.bundles.ktor)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
         iosMain.dependencies {
-
+            // KTOR Engine for iOS
+            implementation(libs.ktor.client.darwin)
         }
         androidMain.dependencies {
-
+            // KTOR Engine for Android
+            api(libs.ktor.client.okhttp)
         }
     }
 }
