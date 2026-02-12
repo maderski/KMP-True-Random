@@ -12,5 +12,6 @@ enum class NetworkError : ErrorType {
     PAYLOAD_TOO_LARGE,
     SERVER_ERROR,
     SERIALIZATION,
+    UNABLE_TO_PARSE_INTEGER,
     UNKNOWN;
 }
