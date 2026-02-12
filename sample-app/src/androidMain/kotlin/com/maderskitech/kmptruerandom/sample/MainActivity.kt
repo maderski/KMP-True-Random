@@ -3,6 +3,8 @@ package com.maderskitech.kmptruerandom.sample
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import com.maderskitech.kmptruerandom.numbergenerator.data.remote.RandomNumberApiImpl
 import com.maderskitech.kmptruerandom.numbergenerator.data.remote.network.HttpClientFactory
 import com.maderskitech.kmptruerandom.numbergenerator.domain.DefaultRandomNumberRepository
@@ -21,7 +23,11 @@ class MainActivity : ComponentActivity() {
         viewModel = RandomNumberViewModel(repository)
 
         setContent {
-            RandomNumberApp(viewModel)
+            val uiState by viewModel.uiState.collectAsState()
+            RandomNumberApp(
+                uiState = uiState,
+                onGetRandomNumberClick = viewModel::loadRandomNumber,
+            )
         }
     }
 

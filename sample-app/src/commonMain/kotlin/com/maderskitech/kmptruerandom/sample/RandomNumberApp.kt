@@ -8,15 +8,15 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun RandomNumberApp(viewModel: RandomNumberViewModel) {
-    val uiState by viewModel.uiState.collectAsState()
+fun RandomNumberApp(
+    uiState: RandomNumberUiState,
+    onGetRandomNumberClick: () -> Unit,
+) {
     val errorMessage = uiState.errorMessage
 
     MaterialTheme {
@@ -37,7 +37,7 @@ fun RandomNumberApp(viewModel: RandomNumberViewModel) {
             }
 
             Button(
-                onClick = viewModel::loadRandomNumber,
+                onClick = onGetRandomNumberClick,
                 enabled = !uiState.isLoading,
                 modifier = Modifier.padding(top = 16.dp),
             ) {
