@@ -8,21 +8,16 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.maderskitech.kmptruerandom.numbergenerator.data.RandomNumberRepository
-import kotlinx.coroutines.launch
 
 @Composable
-fun RandomNumberApp(repository: RandomNumberRepository) {
-    var randomNumberText by remember { mutableStateOf("Press the button") }
-    val scope = rememberCoroutineScope()
+fun RandomNumberApp(viewModel: RandomNumberViewModel) {
+    val uiState by viewModel.uiState.collectAsState()
+    val errorMessage = uiState.errorMessage
 
     MaterialTheme {
         Column(
@@ -32,17 +27,21 @@ fun RandomNumberApp(repository: RandomNumberRepository) {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Text(text = randomNumberText)
+            Text(text = uiState.randomNumberText)
+
+            if (errorMessage != null) {
+                Text(
+                    text = errorMessage,
+                    modifier = Modifier.padding(top = 8.dp),
+                )
+            }
+
             Button(
-                onClick = {
-                    scope.launch {
-                        val value = repository.getRandomNumber(min = 1, max = 100)
-                        randomNumberText = value.toString()
-                    }
-                },
+                onClick = viewModel::loadRandomNumber,
+                enabled = !uiState.isLoading,
                 modifier = Modifier.padding(top = 16.dp),
             ) {
-                Text("Get random number")
+                Text(if (uiState.isLoading) "Loading..." else "Get random number")
             }
         }
     }
