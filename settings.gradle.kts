@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "KMP_True_Random"
 include(":shared")
+include(":sample-app")
