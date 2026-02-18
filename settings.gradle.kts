@@ -6,6 +6,9 @@ pluginManagement {
         mavenCentral()
     }
 }
+plugins {
+    id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
+}
 
 dependencyResolutionManagement {
     repositories {
@@ -16,3 +19,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "KMP_True_Random"
 include(":shared")
+include(":sample-app")

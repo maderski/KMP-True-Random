@@ -1,10 +1,11 @@
 [versions]
-agp = "8.9.1"
+agp = "8.13.2"
 kotlin = "2.1.20"
 compose = "1.5.4"
 compose-material3 = "1.1.2"
 androidx-activityCompose = "1.8.0"
 ktor = "3.1.0"
+compose-mp = "1.7.3"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -23,6 +24,12 @@ ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negoti
 ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 ktor-client-auth = { module = "io.ktor:ktor-client-auth", version.ref = "ktor" }
+
+# Compose Multiplatform
+compose-runtime-mp = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "compose-mp" }
+compose-foundation-mp = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "compose-mp" }
+compose-material3-mp = { module = "org.jetbrains.compose.material3:material3", version.ref = "compose-mp" }
+compose-ui-mp = { module = "org.jetbrains.compose.ui:ui", version.ref = "compose-mp" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
