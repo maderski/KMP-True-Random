@@ -16,9 +16,16 @@ kotlin {
             }
         }
     }
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach {
+        it.binaries.framework {
+            baseName = "SampleApp"
+            isStatic = true
+        }
+    }
 
     sourceSets {
         val commonMain by getting {
@@ -29,6 +36,10 @@ kotlin {
                 implementation(libs.compose.material3.mp)
                 implementation(libs.compose.ui.mp)
             }
+        }
+
+        iosMain.dependencies {
+            implementation(libs.ktor.client.darwin)
         }
 
         val androidMain by getting {
